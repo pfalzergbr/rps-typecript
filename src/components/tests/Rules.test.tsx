@@ -66,4 +66,15 @@ describe('Welcome message WITH DLC', () => {
     });
     expect(dlcChangeButton).toHaveTextContent(buttonText)
   });
+
+  test('should switch back to original, once clicked on back to original Button', () => {
+    renderWithContext(<Rules />);
+    const changeButton = screen.getByRole('button', { name: /add/i });
+    userEvent.click(changeButton);
+    const dlcChangeButton = screen.getByRole('button', {
+      name: buttonText,
+    });
+    userEvent.click(dlcChangeButton);
+    expect(changeButton).toHaveTextContent('Add Lizard/Spock')
+  });
 });

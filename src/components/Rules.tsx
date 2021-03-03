@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { RulesContext, ActionContext } from '../contexts/rulesContext';
+import { lizardSpockRules } from '../gameRules/';
 
 const Rules: React.FC = () => {
-  const { rulesDescription } = useContext(RulesContext);
-  const { setGameRules } = useContext(ActionContext)
-  const { rules, changeMessage, buttonText } = rulesDescription;
+  const { gameRules } = useContext(RulesContext);
+  const { changeRules } = useContext(ActionContext)
+  const { rules, changeMessage, buttonText } = gameRules.rulesDescription;
 
-  const changeRules = () => {
-    setGameRules()
+  const handleChangeRules = () => {
+    changeRules(lizardSpockRules)
   };
 
   return (
@@ -16,7 +17,7 @@ const Rules: React.FC = () => {
         <h3>Rules</h3>
         <p>{rules}</p>
         <p>{changeMessage}</p>
-        <button onClick={changeRules}>{buttonText}</button>
+        <button onClick={handleChangeRules}>{buttonText}</button>
       </div>
     </div>
   );

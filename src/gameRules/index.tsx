@@ -1,28 +1,3 @@
-export interface RulesetTitle {
-  name: string;
-  title: string | null;
-}
-
-export interface RulesDescription {
-  rules: string;
-  changeMessage: string;
-  buttonText: string;
-}
-
-// export interface Choice {
-//   choiceName: string,
-//   beats: string[]
-// }
-
-// export interface Choices {
-
-// }
-
-export interface GameRuleset {
-  rulesetTitle: RulesetTitle;
-  rulesDescription: RulesDescription;
-}
-
 
 
 

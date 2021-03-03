@@ -3,10 +3,6 @@ import Header from '../Header';
 import { lizardSpockRules } from '../../gameRules';
 import { RulesContext} from '../../contexts/rulesContext';
 
-const dlc = {
-  name: 'lizardSpock',
-  title: 'Lizard, Spock!'
-}
 
 describe('The Header', () => {
   test('should render the title correctly on startup with base ruleset', () => {
@@ -17,7 +13,7 @@ describe('The Header', () => {
   
   test('should render DLC subtitle, if there is an active DLC.', () => {
     render(
-      <RulesContext.Provider value={lizardSpockRules}>
+      <RulesContext.Provider value={{gameRules: lizardSpockRules}}>
         <Header/> 
       </RulesContext.Provider>
 

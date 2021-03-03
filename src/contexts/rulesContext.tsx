@@ -1,19 +1,20 @@
 import { createContext, useState } from 'react';
 import { originalRules } from '../gameRules/index';
 
-export interface RulesProviderProps {
-  children: React.ReactNode;
-}
 
-export const RulesContext = createContext(originalRules);
-export const ActionContext = createContext({});
+export const RulesContext = createContext({gameRules: originalRules});
+export const ActionContext: React.Context<IActionContext> = createContext({} as IActionContext);
 
 export const RulesProvider: React.FC<RulesProviderProps> = (props) => {
   const [gameRules, setGameRules] = useState(originalRules);
 
+  const changeRules = (rules: GameRuleset) => {
+    setGameRules(rules);
+  }
+
   return (
-    <RulesContext.Provider value={gameRules}>
-      <ActionContext.Provider value={setGameRules}>
+    <RulesContext.Provider value={{gameRules}}>
+      <ActionContext.Provider value={{changeRules}}>
         {props.children}
       </ActionContext.Provider>
     </RulesContext.Provider>
