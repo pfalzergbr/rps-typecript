@@ -1,19 +1,15 @@
-import { RulesetTitle } from '../gameRules'
-import { originalRules } from '../gameRules'
-// interface RulesetTitle {
-//   name: string;
-//   title: string;
-// }
+import { useContext } from 'react';
+import { RulesContext } from '../contexts/rulesContext';
 
-export interface HeaderProps {
-  ruleset?: RulesetTitle
-}
+const Header: React.FC = () => {
+  const { rulesetTitle } = useContext(RulesContext);
 
-const Header: React.FC<HeaderProps> = ({ruleset = originalRules.rulesetTitle}) => {
-  return <div>
-    <h1>Rock, Paper, Scissors</h1>
-    {ruleset.title && <h2>{ruleset.title}</h2>}
-  </div>;
+  return (
+    <div>
+      <h1>Rock, Paper, Scissors</h1>
+      {rulesetTitle.title && <h2>{rulesetTitle.title}</h2>}
+    </div>
+  );
 };
 
 export default Header;
