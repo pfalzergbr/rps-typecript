@@ -1,11 +1,6 @@
-
-
-
 export const originalRules: GameRuleset = {
-  rulesetTitle: {
-    name: 'original',
-    title: null,
-  },
+  name: 'original',
+  title: null,
   rulesDescription: {
     rules:
       'Scissors cuts paper, paper covers rock, rock crushes scissors. A classic, time proven way to resolve your disputes.',
@@ -16,10 +11,8 @@ export const originalRules: GameRuleset = {
 };
 
 export const lizardSpockRules: GameRuleset = {
-  rulesetTitle: {
-    name: 'lizardSpock',
-    title: 'Lizard, Spock!',
-  },
+  name: 'lizardSpock',
+  title: 'Lizard, Spock!',
   rulesDescription: {
     rules:
       'Scissors cuts paper, paper covers rock. Rock crushes lizard, lizard poisions Spock. Spock smashes scissors, scissors decapitates lizard. Lizard eats paper, paper disporves Spock. Spock vapourizes rock, and as it always has, rock crushes scissors.',

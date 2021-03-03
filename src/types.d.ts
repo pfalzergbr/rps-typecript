@@ -1,15 +1,15 @@
 interface IActionContext {
-  changeRules: (rules: GameRuleset) => void;
+  changeRules: (rules: string) => void;
 }
 
 interface RulesProviderProps {
   children: React.ReactNode;
 }
 
-interface RulesetTitle {
-  name: string;
-  title: string | null;
-}
+// interface RulesetTitle {
+//   name: string;
+//   title: string | null;
+// }
 
 interface RulesDescription {
   rules: string;
@@ -27,6 +27,7 @@ interface RulesDescription {
 // }
 
 interface GameRuleset {
-  rulesetTitle: RulesetTitle;
+  name: string;
+  title: string | null;
   rulesDescription: RulesDescription;
 }

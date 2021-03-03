@@ -3,7 +3,7 @@ import { RulesContext } from '../contexts/rulesContext';
 
 const Header: React.FC = () => {
   const { gameRules } = useContext(RulesContext);
-  const { title } = gameRules.rulesetTitle;
+  const { title } = gameRules;
 
   return (
     <div>

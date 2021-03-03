@@ -46,7 +46,6 @@ describe('Welcome message WITH DLC', () => {
     userEvent.click(changeButton);
     const dlcRules = screen.getByText(rules);
     expect(dlcRules).toHaveTextContent(rules);
-    screen.debug();
   });
 
   test('should render a change message with DLC', () => {

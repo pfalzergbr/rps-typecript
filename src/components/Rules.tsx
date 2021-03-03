@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { RulesContext, ActionContext } from '../contexts/rulesContext';
-import { lizardSpockRules } from '../gameRules/';
+
 
 const Rules: React.FC = () => {
   const { gameRules } = useContext(RulesContext);
@@ -8,7 +8,9 @@ const Rules: React.FC = () => {
   const { rules, changeMessage, buttonText } = gameRules.rulesDescription;
 
   const handleChangeRules = () => {
-    changeRules(lizardSpockRules)
+    gameRules.name === 'lizardSpock' ? 
+    changeRules('original') : 
+    changeRules('lizardSpock')  
   };
 
   return (
