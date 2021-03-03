@@ -1,12 +1,14 @@
-import { RulesDescription } from '../gameRules';
-import { originalRules } from '../gameRules';
-export interface RulesProps {
-  rulesDescription?: RulesDescription;
-}
+import { useContext } from 'react';
+import { RulesContext, ActionContext } from '../contexts/rulesContext';
 
+const Rules: React.FC = () => {
+  const { rulesDescription } = useContext(RulesContext);
+  const { setGameRules } = useContext(ActionContext)
+  const { rules, changeMessage, buttonText } = rulesDescription;
 
-const Rules: React.FC<RulesProps> = ({ rulesDescription = originalRules.rulesDescription }) => {
-  const {rules, changeMessage, buttonText} = rulesDescription
+  const changeRules = () => {
+    setGameRules()
+  };
 
   return (
     <div>
@@ -14,7 +16,7 @@ const Rules: React.FC<RulesProps> = ({ rulesDescription = originalRules.rulesDes
         <h3>Rules</h3>
         <p>{rules}</p>
         <p>{changeMessage}</p>
-        <button>{buttonText}</button>
+        <button onClick={changeRules}>{buttonText}</button>
       </div>
     </div>
   );

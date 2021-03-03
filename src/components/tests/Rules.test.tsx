@@ -1,5 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, renderWithContext, screen } from '../../test-utils/test-utils';
+import userEvent from '@testing-library/user-event';
 import Rules from '../Rules';
+import { lizardSpockRules } from '../../gameRules';
 
 describe('Welcome message without DLC', () => {
   const ruleset = {
@@ -32,31 +34,36 @@ describe('Welcome message without DLC', () => {
 });
 
 describe('Welcome message WITH DLC', () => {
-  const extendedRuleset = {
-    rules:
-      'Scissors cuts paper, paper covers rock. Rock crushes lizard, lizard poisions Spock. Spock smashes scissors, scissors decapitate lizard. Lizard eats paper, paper disproves Spock. Spock vapourizes rock, and rock crushes scissors.',
-    changeMessage:
-      'Sounds complicated? Ask Dr. Cooper to explain again, or switch back to our timeless classic base rules',
-    buttonText: 'Back to Classic',
-  };
+  const {
+    rules,
+    changeMessage,
+    buttonText,
+  } = lizardSpockRules.rulesDescription;
 
   test('should render DLC welcome message', () => {
-    render(<Rules rulesDescription={extendedRuleset} />);
-    const rules = screen.getByText(extendedRuleset.rules);
-    expect(rules).toBeInTheDocument();
+    renderWithContext(<Rules />);
+    const changeButton = screen.getByRole('button', { name: /add/i });
+    userEvent.click(changeButton);
+    const dlcRules = screen.getByText(rules);
+    expect(dlcRules).toHaveTextContent(rules);
+    screen.debug();
   });
 
   test('should render a change message with DLC', () => {
-    render(<Rules rulesDescription={extendedRuleset} />);
-    const changeMessage = screen.getByText(extendedRuleset.changeMessage);
-    expect(changeMessage).toBeInTheDocument();
+    renderWithContext(<Rules />);
+    const changeButton = screen.getByRole('button', { name: /add/i });
+    userEvent.click(changeButton);
+    const dlcChangeMessage = screen.getByText(changeMessage);
+    expect(dlcChangeMessage).toHaveTextContent(changeMessage)
   });
 
   test('should render switch off DLC button', () => {
-    render(<Rules rulesDescription={extendedRuleset} />);
-    const changeButton = screen.getByRole('button', {
-      name: extendedRuleset.buttonText,
+    renderWithContext(<Rules />);
+    const changeButton = screen.getByRole('button', { name: /add/i });
+    userEvent.click(changeButton);
+    const dlcChangeButton = screen.getByRole('button', {
+      name: buttonText,
     });
-    expect(changeButton).toBeInTheDocument();
+    expect(dlcChangeButton).toHaveTextContent(buttonText)
   });
 });
