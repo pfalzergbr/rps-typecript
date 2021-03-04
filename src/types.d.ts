@@ -1,9 +1,7 @@
+type OriginalChoices = 'rock' | 'paper' | 'scissors';
+type LizardSpockChoices = 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock';
 
-
-type OriginalChoices = 'rock'| 'paper' | 'scissors'
-type LizardSpockChoices = 'rock'| 'paper' | 'scissors' | 'lizard' | 'spock'
- 
-type ValidRules = OriginalChoices | LizardSpockChoices
+type ValidRules = OriginalChoices | LizardSpockChoices;
 
 interface IActionContext {
   changeRules: (rules: string) => void;
@@ -19,10 +17,10 @@ interface RulesDescription {
   buttonText: string;
 }
 
-// interface Choice<T>{
-//   choiceName: T,
-//   beats: Beat<T>[];
-// }
+interface Choice<T> {
+  choiceName: T;
+  beats: Beat<T>[];
+}
 
 interface Beat<T> {
   choice: T;
@@ -33,5 +31,12 @@ interface GameRuleset<T> {
   name: string;
   title: string | null;
   rulesDescription: RulesDescription;
-  choices: Choice<T>[]
+  choices: Choice<LizardSpockChoices>[];
+}
+
+interface WinnerObject {
+  playerChoice: ValidRules;
+  computerChoice: ValidRules;
+  winner: 'player' | 'computer';
+  message: string;
 }
