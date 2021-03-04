@@ -17,10 +17,10 @@ interface RulesDescription {
   buttonText: string;
 }
 
-interface Choice <T>{
-  choiceName: T,
-  beats: Beat<T>[];
-}
+// interface Choice <T>{
+//   choiceName: T,
+//   beats: Beat<T>[];
+// }
 
 interface Beat<T> {
   choice: T;
@@ -31,5 +31,5 @@ interface GameRuleset<T> {
   name: string;
   title: string | null;
   rulesDescription: RulesDescription;
-  choices: T[]
+  choices: Choice<T>[]
 }

@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { originalRules } from '../gameRules';
+import { useContext } from 'react';
+import { RulesContext } from '../contexts/rulesContext';
 import Choice from './Choice';
 import GameResults from './GameResult';
 
 export interface PlayAreaProps {}
 
 const PlayArea: React.FC<PlayAreaProps> = () => {
+  const { gameRules } = useContext(RulesContext);
   const [gameOn, setGameOn] = useState(false);
 
   const playGame = () => {
@@ -13,9 +15,9 @@ const PlayArea: React.FC<PlayAreaProps> = () => {
   }
 
   const activeComponent = gameOn ? (
-    <GameResults rules={originalRules} />
+    <GameResults rules={gameRules} />
   ) : (
-    <Choice rules={originalRules} playGame={playGame}/>
+    <Choice rules={gameRules} playGame={playGame}/>
   );
 
   return <>{activeComponent}</>;

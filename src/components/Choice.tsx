@@ -1,23 +1,17 @@
 export interface ChoiceProps {
-  rules: GameRuleset<Choice<OriginalChoices | LizardSpockChoices>>;
+  rules: GameRuleset<OriginalChoices | LizardSpockChoices>;
   playGame: () => void;
 }
 
 const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
+  const { choices } = rules;
+
   return (
     <div>
       <h2>Choose your weapon!</h2>
-      <ul>
-        <li>
-          <button>Rock</button>
-        </li>
-        <li>
-          <button>Paper</button>
-        </li>
-        <li>
-          <button>Scissors</button>
-        </li>
-      </ul>
+      <div>
+        {choices.map(({choiceName}, index) => <button key={choiceName + index}>{choiceName}</button>)}
+      </div>
       <button onClick={playGame}>Play!</button>
     </div>
   );

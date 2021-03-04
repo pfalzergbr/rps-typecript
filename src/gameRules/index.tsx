@@ -1,4 +1,4 @@
-export const originalRules: GameRuleset<Choice<OriginalChoices>> = {
+export const originalRules: GameRuleset<OriginalChoices> = {
   name: 'original',
   title: null,
   rulesDescription: {
@@ -39,7 +39,7 @@ export const originalRules: GameRuleset<Choice<OriginalChoices>> = {
   ],
 };
 
-export const lizardSpockRules: GameRuleset<Choice<LizardSpockChoices>> = {
+export const lizardSpockRules: GameRuleset<LizardSpockChoices> = {
   name: 'lizardSpock',
   title: 'Lizard, Spock!',
   rulesDescription: {
