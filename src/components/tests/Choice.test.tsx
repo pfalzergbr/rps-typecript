@@ -40,4 +40,21 @@ describe('Choice Area', () => {
     expect(mockPlayGame).toHaveBeenCalledWith('rock');
   })
   
+  test('should display choose message if used did not choose', () => {
+    render(<Choice rules={originalRules} playGame={mockPlayGame}/>)
+    const chosenOption = screen.getByText(/choose/i, {exact: false})
+    expect(chosenOption).toBeInTheDocument();
+  })
+  
+  test('should display the right chosen option, if the user chose', () => {
+    render(<Choice rules={originalRules} playGame={mockPlayGame}/>)
+    const chosenOption = screen.getByText(/choose/i, {exact: false})
+    expect(chosenOption).toBeInTheDocument();
+    const rockButton = screen.getByRole('button', {name: /rock/i})
+    // const paperButton = screen.getByRole('button', {name: /paper/i})
+    // const scissorsButton = screen.getByRole('button', {name: /scissors/i})
+    userEvent.click(rockButton);
+    expect(chosenOption).toHaveTextContent(/rock/i)
+  })
+  
 })

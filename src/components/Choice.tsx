@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { capitalize } from '../utils/capitalize'
 
 export interface ChoiceProps {
   rules: GameRuleset<ValidRules>;
@@ -23,7 +24,7 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
 
   return (
     <div>
-      <h2>Choose your weapon!</h2>
+      <h2>{choice ? `You are choosing ${capitalize(choice)}` : 'Choose your weapon!'}</h2>
       <div>
         {choices.map(({ choiceName }, index) => (
           <button
@@ -31,7 +32,7 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
             value={choiceName}
             key={choiceName + index}
           >
-            {choiceName}
+            {capitalize(choiceName)}
           </button>
         ))}
       </div>

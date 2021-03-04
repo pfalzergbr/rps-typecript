@@ -1,4 +1,5 @@
 
+
 type OriginalChoices = 'rock'| 'paper' | 'scissors'
 type LizardSpockChoices = 'rock'| 'paper' | 'scissors' | 'lizard' | 'spock'
  
@@ -18,7 +19,7 @@ interface RulesDescription {
   buttonText: string;
 }
 
-// interface Choice <T>{
+// interface Choice<T>{
 //   choiceName: T,
 //   beats: Beat<T>[];
 // }
