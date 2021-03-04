@@ -2,6 +2,7 @@
 type OriginalChoices = 'rock'| 'paper' | 'scissors'
 type LizardSpockChoices = 'rock'| 'paper' | 'scissors' | 'lizard' | 'spock'
  
+type ValidRules = OriginalChoices | LizardSpockChoices
 
 interface IActionContext {
   changeRules: (rules: string) => void;

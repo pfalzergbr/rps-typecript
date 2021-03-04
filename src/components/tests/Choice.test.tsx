@@ -32,7 +32,12 @@ describe('Choice Area', () => {
   })
   
   test('should call playGame function with the right choice', () => {
-    
+    render(<Choice rules={originalRules} playGame={mockPlayGame}/>)
+    const rockButton = screen.getByRole('button', {name: /rock/i});
+    userEvent.click(rockButton);
+    const playButton = screen.getByRole('button', {name: /play/i});
+    userEvent.click(playButton);
+    expect(mockPlayGame).toHaveBeenCalledWith('rock');
   })
   
 })

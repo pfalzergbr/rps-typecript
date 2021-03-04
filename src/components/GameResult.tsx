@@ -1,5 +1,5 @@
 export interface GameResultProps {
-  rules: GameRuleset<OriginalChoices | LizardSpockChoices>;
+  rules: GameRuleset<ValidRules>;
 }
  
 const GameResult: React.FC<GameResultProps> = ({rules}) => {

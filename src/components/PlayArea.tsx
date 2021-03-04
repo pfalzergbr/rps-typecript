@@ -10,7 +10,7 @@ const PlayArea: React.FC<PlayAreaProps> = () => {
   const { gameRules } = useContext(RulesContext);
   const [gameOn, setGameOn] = useState(false);
 
-  const playGame = () => {
+  const playGame = ( choice: OriginalChoices | LizardSpockChoices ) => {
     setGameOn(true);
   }
 
