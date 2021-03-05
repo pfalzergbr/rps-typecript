@@ -5,7 +5,7 @@ import PlayArea from '../PlayArea';
 describe('PlayArea', () => {
   test('should render Choice component, if the game is not running', () => {
     render(<PlayArea />);
-    const choiceHeader = screen.getByRole('heading');
+    const choiceHeader = screen.getByRole('heading', {level: 2});
     expect(choiceHeader).toHaveTextContent(/choose/i)
   })
 
