@@ -4,16 +4,13 @@ export const chooseWinner = (
 ): WinnerObject => {
   const playerChoiceName: ValidRules = playerChoice.choiceName;
   const computerChoiceName: ValidRules = computerChoice.choiceName;
-  
-  console.log(playerChoiceName)
-  console.log(computerChoiceName)
 
   const winnerObject: WinnerObject = {
     playerChoice: playerChoice.choiceName,
     computerChoice: computerChoice.choiceName,
     winner: 'draw',
     message: '',
-  };
+  }; 
 
   const playerBeatMessage = playerChoice.beats.find(
     (element) => element.choice === computerChoiceName

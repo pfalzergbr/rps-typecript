@@ -19,6 +19,7 @@ const GameResult: React.FC<GameResultProps> = ({ restartGame, gameResult }) => {
 
   return (
     <div>
+      <h2>Results</h2>
       <div>
         <p>{playerChoiceMessage}</p>
       </div>
@@ -28,7 +29,6 @@ const GameResult: React.FC<GameResultProps> = ({ restartGame, gameResult }) => {
       <div>
         <p>{resultMessage}</p>
       </div>
-      <h2>Results</h2>
       <button onClick={restartGame}>Play again</button>
     </div>
   );
