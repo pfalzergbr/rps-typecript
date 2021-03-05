@@ -14,7 +14,7 @@ export const originalRules: GameRuleset<OriginalChoices> = {
       beats: [
         {
           choice: 'scissors',
-          message: 'Rock smashes scissors',
+          message: 'Rock smashes scissors.',
         },
       ],
     },
@@ -23,7 +23,7 @@ export const originalRules: GameRuleset<OriginalChoices> = {
       beats: [
         {
           choice: 'rock',
-          message: 'Paper covers rock',
+          message: 'Paper covers rock.',
         },
       ],
     },
@@ -31,7 +31,7 @@ export const originalRules: GameRuleset<OriginalChoices> = {
       choiceName: 'scissors',
       beats: [
         {
-          choice: 'scissors',
+          choice: 'paper',
           message: 'Scissors cuts paper.',
         },
       ],
@@ -55,11 +55,11 @@ export const lizardSpockRules: GameRuleset<LizardSpockChoices> = {
       beats: [
         {
           choice: 'scissors',
-          message: 'Rock smashes scissors',
+          message: 'Rock smashes scissors.',
         },
         {
           choice: 'lizard',
-          message: 'Rock smashes lizard',
+          message: 'Rock smashes lizard.',
         },
       ],
     },
@@ -68,11 +68,11 @@ export const lizardSpockRules: GameRuleset<LizardSpockChoices> = {
       beats: [
         {
           choice: 'rock',
-          message: 'Paper covers rock',
+          message: 'Paper covers rock.',
         },
         {
           choice: 'spock',
-          message: 'Paper disproves Spock',
+          message: 'Paper disproves Spock.',
         },
       ],
     },
@@ -80,12 +80,12 @@ export const lizardSpockRules: GameRuleset<LizardSpockChoices> = {
       choiceName: 'scissors',
       beats: [
         {
-          choice: 'scissors',
+          choice: 'paper',
           message: 'Scissors cuts paper.',
         },
         {
           choice: 'lizard',
-          message: 'Scissors decapitates lizard. (No animals were harmed making this game)',
+          message: 'Scissors decapitates lizard. (No animals were harmed making this game).',
         },
       ],
     },
@@ -107,11 +107,11 @@ export const lizardSpockRules: GameRuleset<LizardSpockChoices> = {
       beats: [
         {
           choice: 'rock',
-          message: 'Spock vapourizes rock',
+          message: 'Spock vapourizes rock.',
         },
         {
           choice: 'spock',
-          message: 'Spock crushes scissors',
+          message: 'Spock crushes scissors.',
         },
       ],
     },
