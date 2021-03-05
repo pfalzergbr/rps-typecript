@@ -1,4 +1,5 @@
-type OriginalChoices = 'rock' | 'paper' | 'scissors';
+type OriginalChoices = 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock';
+// type OriginalChoices = 'rock' | 'paper' | 'scissors' ;
 type LizardSpockChoices = 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock';
 
 type ValidRules = OriginalChoices | LizardSpockChoices;
@@ -31,7 +32,7 @@ interface GameRuleset<T> {
   name: string;
   title: string | null;
   rulesDescription: RulesDescription;
-  choices: Choice<LizardSpockChoices>[];
+  choices: Choice<T>[];
 }
 
 interface WinnerObject {

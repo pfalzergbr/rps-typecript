@@ -1,23 +1,23 @@
 import { useState } from 'react';
-import { chooseWinner} from '../game/chooseWinner';
+import { chooseWinner } from '../game/chooseWinner';
 import { computerChoice } from '../game/computerChoice';
 
-
 const useGame = () => {
-  const [gameOn, setGameOn] = useState(false);
+  const [gameResult, setGameResult] = useState<WinnerObject | null>(null);
 
-  
   const restartGame = () => {
-    setGameOn(false);
-  }
-  const playGame = ( playerChoice: Choice<ValidRules>, choices: Choice<ValidRules>[]) => {
-    setGameOn(true);
+    setGameResult(null);
+  };
+  const playGame = (
+    playerChoice: Choice<ValidRules>,
+    choices: Choice<ValidRules>[]
+  ) => {
     const computer = computerChoice(choices);
-    return chooseWinner(playerChoice, computer)
-  }
-  // chooseWinner()
+    const gameResult = chooseWinner(playerChoice, computer);
+    setGameResult(gameResult);
+  };
 
-  return { gameOn, playGame, restartGame, }
-}
- 
+  return { gameResult, playGame, restartGame };
+};
+
 export default useGame;

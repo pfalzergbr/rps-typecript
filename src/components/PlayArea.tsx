@@ -8,7 +8,7 @@ import GameResults from './GameResult';
 export interface PlayAreaProps {}
 
 const PlayArea: React.FC<PlayAreaProps> = () => {
-  const { gameOn, playGame, restartGame } = useGame();
+  const { gameResult, playGame, restartGame } = useGame();
   const { gameRules } = useContext(RulesContext);
 
   const handlePlayGame = (playerChoice:Choice<ValidRules>) => {
@@ -16,8 +16,8 @@ const PlayArea: React.FC<PlayAreaProps> = () => {
   }
 
 
-  const activeComponent = gameOn ? (
-    <GameResults rules={gameRules} restartGame={restartGame} />
+  const activeComponent = gameResult ? (
+    <GameResults gameResult={gameResult} restartGame={restartGame} />
   ) : (
     <Choice rules={gameRules} playGame={handlePlayGame}/>
   );

@@ -1,9 +1,9 @@
 export interface GameResultProps {
-  rules: GameRuleset<ValidRules>;
+  gameResult: WinnerObject;
   restartGame: () => void;
 }
  
-const GameResult: React.FC<GameResultProps> = ({rules, restartGame}) => {
+const GameResult: React.FC<GameResultProps> = ({ restartGame}) => {
   return ( <div>
     <h2>Results</h2>
     <button onClick={restartGame}>Play again</button>
