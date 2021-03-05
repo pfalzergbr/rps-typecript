@@ -18,4 +18,17 @@ describe('PlayArea', () => {
     const resultHeader = await screen.findByRole('heading');
     expect(resultHeader).toHaveTextContent(/results/i)
   })
+
+  test('should render Choice component again, if clicked play again', async () => {
+    render(<PlayArea />)
+    const paperButton = screen.getByRole('button', {name: /rock/i});
+    userEvent.click(paperButton);
+    const playButton = screen.getByRole('button', {name: /play/i});
+    userEvent.click(playButton);
+    const playAgainButton = await screen.findByRole('button', {name: /play again/i});
+    userEvent.click(playAgainButton);
+    const choiceHeader = await screen.findByRole('heading');
+    expect(choiceHeader).toHaveTextContent(/choose/i)
+  })
+  
 })

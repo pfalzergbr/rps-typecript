@@ -5,6 +5,13 @@ export const chooseWinner = (
   const playerChoiceName: ValidRules = playerChoice.choiceName;
   const computerChoiceName: ValidRules = computerChoice.choiceName;
 
+  const winnerObject: WinnerObject = {
+    playerChoice: playerChoice.choiceName,
+    computerChoice: computerChoice.choiceName,
+    winner: 'draw',
+    message: '',
+  };
+
   const playerBeatMessage = playerChoice.beats.find(
     (element) => element.choice === computerChoiceName
   );
@@ -13,24 +20,24 @@ export const chooseWinner = (
     (element) => element.choice === playerChoiceName
   );
 
-  const winner = playerChoice.beats.find(
+  const playerBeatsComputer: boolean = !!playerChoice.beats.find(
     (element) => element.choice === computerChoiceName
-  )
-    ? 'player'
-    : 'computer';
+  );
 
-  let resultMessage: string;
-  if (winner === 'player' && playerBeatMessage) {
-    resultMessage = playerBeatMessage.message;
-  } else if (winner === 'computer' && computerBeatMessage) {
-    resultMessage = computerBeatMessage.message;
+  if (playerChoiceName === computerChoiceName) {
+    winnerObject.winner = 'draw';
+  } else if (playerBeatsComputer) {
+    winnerObject.winner = 'player';
+  } else {
+    winnerObject.winner = 'computer';
   }
 
-  const winnerObject : WinnerObject = {
-    playerChoice: playerChoice.choiceName,
-    computerChoice: computerChoice.choiceName,
-    winner,
-    message: resultMessage
+  if (winnerObject.winner === 'player' && playerBeatMessage) {
+    winnerObject.message = playerBeatMessage.message;
+  } else if (winnerObject.winner === 'computer' && computerBeatMessage) {
+    winnerObject.message = computerBeatMessage.message;
+  } else {
+    winnerObject.message = 'Draw!';
   }
 
   return winnerObject;

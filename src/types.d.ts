@@ -37,6 +37,6 @@ interface GameRuleset<T> {
 interface WinnerObject {
   playerChoice: ValidRules;
   computerChoice: ValidRules;
-  winner: 'player' | 'computer';
+  winner: 'player' | 'computer' | 'draw';
   message: string;
 }

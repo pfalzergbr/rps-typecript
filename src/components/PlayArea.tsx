@@ -13,9 +13,12 @@ const PlayArea: React.FC<PlayAreaProps> = () => {
   const playGame = ( choice: OriginalChoices | LizardSpockChoices ) => {
     setGameOn(true);
   }
+  const restartGame = () => {
+    setGameOn(false);
+  }
 
   const activeComponent = gameOn ? (
-    <GameResults rules={gameRules} />
+    <GameResults rules={gameRules} restartGame={restartGame} />
   ) : (
     <Choice rules={gameRules} playGame={playGame}/>
   );

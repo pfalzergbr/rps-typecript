@@ -62,4 +62,15 @@ describe('chooseWinner', () => {
       message: 'Paper disproves Spock.',
     });
   });
+
+  test('should return the correct winner object, if the players draw', () => {
+    const winnerObject = chooseWinner(rock, rock);
+    expect(winnerObject).toEqual({
+      playerChoice: 'rock',
+      computerChoice: 'rock',
+      winner: 'draw',
+      message: 'Draw!',
+    });
+  })
+  
 });
