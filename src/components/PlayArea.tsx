@@ -1,26 +1,25 @@
-import { useState } from 'react';
 import { useContext } from 'react';
 import { RulesContext } from '../contexts/rulesContext';
+import useGame from '../hooks/useGame';
 import Choice from './Choice';
 import GameResults from './GameResult';
+
 
 export interface PlayAreaProps {}
 
 const PlayArea: React.FC<PlayAreaProps> = () => {
+  const { gameOn, playGame, restartGame } = useGame();
   const { gameRules } = useContext(RulesContext);
-  const [gameOn, setGameOn] = useState(false);
 
-  const playGame = ( choice: OriginalChoices | LizardSpockChoices ) => {
-    setGameOn(true);
+  const handlePlayGame = (playerChoice:Choice<ValidRules>) => {
+    playGame(playerChoice, gameRules.choices);
   }
-  const restartGame = () => {
-    setGameOn(false);
-  }
+
 
   const activeComponent = gameOn ? (
     <GameResults rules={gameRules} restartGame={restartGame} />
   ) : (
-    <Choice rules={gameRules} playGame={playGame}/>
+    <Choice rules={gameRules} playGame={handlePlayGame}/>
   );
 
   return <>{activeComponent}</>;

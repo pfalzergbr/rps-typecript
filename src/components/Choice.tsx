@@ -3,13 +3,13 @@ import { capitalize } from '../utils/capitalize'
 
 export interface ChoiceProps {
   rules: GameRuleset<ValidRules>;
-  playGame: (choice: ValidRules) => void;
+  playGame: (choice: Choice<ValidRules>) => void;
 }
 
 const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
   const { choices } = rules;
   const [choice, setChoice] = useState<
-    ValidRules | null
+    Choice<ValidRules> | null
   >(null);
 
   const handlePlayGame = () => {
@@ -18,21 +18,21 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
     }
   };
 
-  const handleChoice = (choice: ValidRules) => {
+  const handleChoice = (choice: Choice<ValidRules>) => {
     setChoice(choice);
   };
 
   return (
     <div>
-      <h2>{choice ? `You are choosing ${capitalize(choice)}` : 'Choose your weapon!'}</h2>
+      <h2>{choice ? `You are choosing ${capitalize(choice.choiceName)}` : 'Choose your weapon!'}</h2>
       <div>
-        {choices.map(({ choiceName }, index) => (
+        {choices.map((choice, index) => (
           <button
-            onClick={() => handleChoice(choiceName)}
-            value={choiceName}
-            key={choiceName + index}
+            onClick={() => handleChoice(choice)}
+            // value={choiceName}
+            key={choice.choiceName + index}
           >
-            {capitalize(choiceName)}
+            {capitalize(choice.choiceName)}
           </button>
         ))}
       </div>
