@@ -4,6 +4,9 @@ export const chooseWinner = (
 ): WinnerObject => {
   const playerChoiceName: ValidRules = playerChoice.choiceName;
   const computerChoiceName: ValidRules = computerChoice.choiceName;
+  
+  console.log(playerChoiceName)
+  console.log(computerChoiceName)
 
   const winnerObject: WinnerObject = {
     playerChoice: playerChoice.choiceName,
