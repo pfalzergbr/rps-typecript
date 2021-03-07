@@ -1,11 +1,13 @@
+import { capitalize } from '../utils/capitalize';
+
 export interface OptionProps {
-  option: string;
+  option: Choice<ValidRules>;
   imageUrl: string;
-  onClick: (choice: Choice<ValidRules>) => void;
+  handleClick: (choice: Choice<ValidRules>) => void;
 }
- 
-const Option: React.FC<OptionProps> = () => {
-  return ( <div></div> );
-}
- 
+
+const Option: React.FC<OptionProps> = ({ option, imageUrl, handleClick }) => {
+  return <button onClick={() => handleClick(option)}>{capitalize(option.choiceName)}</button>;
+};
+
 export default Option;
