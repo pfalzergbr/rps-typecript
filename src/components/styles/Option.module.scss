@@ -5,7 +5,22 @@
   display: grid;
   grid-template-rows: min-content min-content;
   grid-row-gap: $space-8;
-  margin-right: $space-24;
+
+
+  &:not(:last-child){
+    margin-right: $space-24;
+  }
+
+  &:hover {
+    & > .image {
+      border: 5px solid $blue;
+      transition: scale 0.2s ease-out;
+      transform: scale(1.05);
+    }
+    & > span {
+      color: $blue;
+    }
+  }
 }
 
 .image {
@@ -16,8 +31,17 @@
   border-radius: 50rem;
   background-size: cover;
   background-position: center;
+
 }
 
 .optionLabel {
   font-size: $font-20;
+}
+
+.active {
+  border: 5px solid $blue;
+
+  & ~ span {
+    color: $blue;
+  }
 }

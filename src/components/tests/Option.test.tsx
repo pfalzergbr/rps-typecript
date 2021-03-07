@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+// import userEvent from '@testing-library/user-event';
 import Option from '../Option';
 
 describe('Option', () => {
@@ -15,7 +16,10 @@ describe('Option', () => {
   }
 
   test('should render the option correctly', () => {
-    render(<Option option={rock} handleClick={mockHandleClick} />)
+    render(<Option option={rock} handleClick={mockHandleClick} activeOption='paper' />)
+    const image = screen.getByRole('img');
+    expect(image).toBeInTheDocument();
+    const label = screen.getByText(/rock/i);
+    expect(label).toBeInTheDocument();
   })
-  
 })

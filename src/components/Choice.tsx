@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { capitalize } from '../utils/capitalize';
 import Option from './Option';
-import styles from './styles/Choice.module.scss'
+import styles from './styles/Choice.module.scss';
 
 export interface ChoiceProps {
   rules: GameRuleset<ValidRules>;
-  playGame: (choice: Choice<ValidRules>) => void;
+  playGame: (option: Choice<ValidRules>) => void;
 }
 
 const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
@@ -24,21 +24,24 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
 
   return (
     <div className={styles.Choice}>
-      <h2>
-        {choice
-          ? `You are choosing ${capitalize(choice.choiceName)}`
-          : 'Choose your weapon!'}
-      </h2>
       <div className={styles.choices}>
-        {choices.map((choice, index) => (
+        {choices.map((option, index) => (
           <Option
-            key={choice.choiceName + index}
+            activeOption={choice ? choice.choiceName : null}
+            key={option.choiceName + index}
             handleClick={handleChoice}
-            option={choice}
+            option={option}
           />
         ))}
       </div>
-      <button className={styles.playButton} onClick={handlePlayGame}>Play!</button>
+      <p>
+        {choice
+          ? `You are choosing ${capitalize(choice.choiceName)}!`
+          : 'Choose your weapon!'}
+      </p>
+      <button className={styles.playButton} onClick={handlePlayGame}>
+        Play!
+      </button>
     </div>
   );
 };

@@ -3,10 +3,11 @@ import userEvent from '@testing-library/user-event';
 import PlayArea from '../PlayArea';
 
 describe('PlayArea', () => {
-  test('should render Choice component, if the game is not running', () => {
-    render(<PlayArea />);
-    const choiceHeader = screen.getByRole('heading', {level: 2});
-    expect(choiceHeader).toHaveTextContent(/choose/i)
+  test('should render Choice buttons, if the game is not running', () => {
+    const buttons = screen.getAllByRole('button');
+    expect(buttons[0]).toHaveTextContent(/rock/i);
+    expect(buttons[1]).toHaveTextContent(/paper/i);
+    expect(buttons[2]).toHaveTextContent(/scissors/i);
   })
 
   test('should render GameResult component, if the game ran', async () => {
@@ -19,7 +20,7 @@ describe('PlayArea', () => {
     expect(resultHeader).toHaveTextContent(/results/i)
   })
 
-  test('should render Choice component again, if clicked play again', async () => {
+  test('should render Choice buttons again, if clicked play again', async () => {
     render(<PlayArea />)
     const paperButton = screen.getByRole('button', {name: /rock/i});
     userEvent.click(paperButton);
@@ -27,8 +28,10 @@ describe('PlayArea', () => {
     userEvent.click(playButton);
     const playAgainButton = await screen.findByRole('button', {name: /play again/i});
     userEvent.click(playAgainButton);
-    const choiceHeader = await screen.findByRole('heading');
-    expect(choiceHeader).toHaveTextContent(/choose/i)
+    const buttons = screen.getAllByRole('button');
+    expect(buttons[0]).toHaveTextContent(/rock/i);
+    expect(buttons[1]).toHaveTextContent(/paper/i);
+    expect(buttons[2]).toHaveTextContent(/scissors/i);
   })
   
 })
