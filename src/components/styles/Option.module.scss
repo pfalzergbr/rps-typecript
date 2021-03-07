@@ -13,8 +13,12 @@
 
   &:hover {
     & > .image {
+      border: 5px solid $blue;
       transition: scale 0.2s ease-out;
       transform: scale(1.05);
+    }
+    & > span {
+      color: $blue;
     }
   }
 }
@@ -35,5 +39,9 @@
 }
 
 .active {
+  border: 5px solid $blue;
 
+  & ~ span {
+    color: $blue;
+  }
 }
