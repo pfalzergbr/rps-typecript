@@ -1,0 +1,12 @@
+@use '../../styles/variables/index' as *;
+
+
+.Choice {
+
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

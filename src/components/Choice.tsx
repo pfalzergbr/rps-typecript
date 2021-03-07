@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { capitalize } from '../utils/capitalize';
 import Option from './Option';
+import styles from './styles/Choice.module.scss'
 
 export interface ChoiceProps {
   rules: GameRuleset<ValidRules>;
@@ -22,13 +23,13 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
   };
 
   return (
-    <div>
+    <div className={styles.Choice}>
       <h2>
         {choice
           ? `You are choosing ${capitalize(choice.choiceName)}`
           : 'Choose your weapon!'}
       </h2>
-      <div>
+      <div className={styles.choices}>
         {choices.map((choice, index) => (
           <Option
             key={choice.choiceName + index}
