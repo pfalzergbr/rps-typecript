@@ -4,6 +4,7 @@ import PlayArea from '../PlayArea';
 
 describe('PlayArea', () => {
   test('should render Choice buttons, if the game is not running', () => {
+    render(<PlayArea />)
     const buttons = screen.getAllByRole('button');
     expect(buttons[0]).toHaveTextContent(/rock/i);
     expect(buttons[1]).toHaveTextContent(/paper/i);
