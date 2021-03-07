@@ -37,7 +37,7 @@
   transform: rotate(-7.5deg);
   transition: transform 0.2s ease-out;
 
-  &:hover, &:focus {
+  &:hover{
     transform: rotate(-5deg);
     transform: scale(1.1);
   }

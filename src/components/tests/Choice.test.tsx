@@ -47,20 +47,33 @@ describe('Choice Area', () => {
     });
   });
 
-  test('should display choose message if used did not choose', () => {
+  test('should display three buttons with original rules', () => {
     render(<Choice rules={originalRules} playGame={mockPlayGame} />);
-    const chosenOption = screen.getByText(/choose/i, { exact: false });
-    expect(chosenOption).toBeInTheDocument();
+    const buttons = screen.getAllByRole('button');
+    expect(buttons[0]).toHaveTextContent(/rock/i);
+    expect(buttons[1]).toHaveTextContent(/paper/i);
+    expect(buttons[2]).toHaveTextContent(/scissors/i);
   });
 
-  test('should display the right chosen option, if the user chose', () => {
+  // test('should display the right chosen option, if the user chose', () => {
+  //   render(<Choice rules={originalRules} playGame={mockPlayGame} />);
+  //   const chosenOption = screen.getByText(/choose/i, { exact: false });
+  //   expect(chosenOption).toBeInTheDocument();
+  //   const rockButton = screen.getByRole('button', { name: /rock/i });
+  //   userEvent.click(rockButton);
+  //   expect(chosenOption).toHaveTextContent(/rock/i);
+  // });
+
+
+  test('should highlight the right option option if clicked', () => {
     render(<Choice rules={originalRules} playGame={mockPlayGame} />);
-    const chosenOption = screen.getByText(/choose/i, { exact: false });
-    expect(chosenOption).toBeInTheDocument();
-    const rockButton = screen.getByRole('button', { name: /rock/i });
-    // const paperButton = screen.getByRole('button', {name: /paper/i})
-    // const scissorsButton = screen.getByRole('button', {name: /scissors/i})
-    userEvent.click(rockButton);
-    expect(chosenOption).toHaveTextContent(/rock/i);
-  });
+    const buttons = screen.getAllByRole('button');
+    const button = buttons[0];
+    const images = screen.getAllByRole('img');
+    const image = images[0]
+    userEvent.click(button);
+    expect(image).toHaveClass('active')
+    expect(images[1]).not.toHaveClass('active');
+    expect(images[2]).not.toHaveClass('active');
+  })
 });
