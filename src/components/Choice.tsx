@@ -33,16 +33,8 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
           <Option
             key={choice.choiceName + index}
             handleClick={handleChoice}
-            // handleClick={() => handleChoice(choice)}
-            imageUrl=''
             option={choice}
           />
-          // <button
-          //   onClick={() => handleChoice(choice)}
-          //   key={choice.choiceName + index}
-          // >
-          //   {capitalize(choice.choiceName)}
-          // </button>
         ))}
       </div>
       <button onClick={handlePlayGame}>Play!</button>
