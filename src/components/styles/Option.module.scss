@@ -1,13 +1,23 @@
 @use '../../styles/variables/index' as *;
 
 
+.button {
+  display: grid;
+  grid-template-rows: min-content min-content;
+  grid-row-gap: $space-8;
+  margin-right: $space-24;
+}
 
 .image {
-  height: 15rem;
-  width: 15rem;
+  height: 12rem;
+  width: 12rem;
   background-color: $blue-light;
   border: 5px solid $light-grey;
   border-radius: 50rem;
   background-size: cover;
   background-position: center;
+}
+
+.optionLabel {
+  font-size: $font-20;
 }

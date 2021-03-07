@@ -1,6 +1,6 @@
 export const originalRules: GameRuleset<OriginalChoices> = {
   name: 'original',
-  title: null,
+  title: 'Classic',
   rulesDescription: {
     rules:
       'Scissors cuts paper, paper covers rock, rock crushes scissors. A classic, time proven way to resolve your disputes.',

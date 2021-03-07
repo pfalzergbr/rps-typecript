@@ -10,7 +10,7 @@ const Option: React.FC<OptionProps> = ({ option, handleClick }) => {
   return (
     <button className={styles.button} onClick={() => handleClick(option)}>
       <div style={{backgroundImage: `url(./images/${option.choiceName}.png)`}} className={styles.image}></div>
-      <span>{capitalize(option.choiceName)}</span>
+      <span className={styles.optionLabel}>{capitalize(option.choiceName)}</span>
     </button>
   );
 };

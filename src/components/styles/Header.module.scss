@@ -29,9 +29,16 @@
   border: 2px solid $blue;
   color: $blue;
   padding: $space-4 $space-8;
+  cursor: pointer;
 
   position: absolute;
   bottom: -3rem;
   right: -1rem;
   transform: rotate(-7.5deg);
+  transition: transform 0.2s ease-out;
+
+  &:hover, &:focus {
+    transform: rotate(-5deg);
+    transform: scale(1.1);
+  }
 }

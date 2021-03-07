@@ -1,7 +1,8 @@
 import { render, screen, renderWithContext } from '../../test-utils/test-utils';
 import Header from '../Header';
-import { lizardSpockRules } from '../../gameRules';
-import { RulesContext} from '../../contexts/rulesContext';
+import { lizardSpockRules, originalRules } from '../../gameRules';
+import { RulesContext } from '../../contexts/rulesContext';
+import userEvent from '@testing-library/user-event';
 
 
 describe('The Header', () => {
@@ -11,6 +12,20 @@ describe('The Header', () => {
     expect(mainHeader).toHaveTextContent(/rock, paper, scissors/i)
   })
   
+  test('should render Classic subtitle if there is no active DLC', () => {
+    render(
+      <RulesContext.Provider value={{gameRules: originalRules}}>
+        <Header/> 
+      </RulesContext.Provider>
+
+    );
+    const mainHeader = screen.getByRole('heading', { level: 1 })
+    const ruleStamp = screen.getByRole('button')
+    expect(mainHeader).toHaveTextContent(/rock, paper, scissors/i)
+    expect(ruleStamp).toHaveTextContent(/classic/i)
+  })
+  
+
   test('should render DLC subtitle, if there is an active DLC.', () => {
     render(
       <RulesContext.Provider value={{gameRules: lizardSpockRules}}>
@@ -19,17 +34,23 @@ describe('The Header', () => {
 
     );
     const mainHeader = screen.getByRole('heading', { level: 1 })
-    const subHeader = screen.getByRole('heading', { level: 2 })
+    const ruleStamp = screen.getByRole('button')
     expect(mainHeader).toHaveTextContent(/rock, paper, scissors/i)
-    expect(subHeader).toHaveTextContent(/lizard, spock/i)
+    expect(ruleStamp).toHaveTextContent(/lizard, spock/i)
   })
 
-  test('should not render DLC subtitle, if there is no active DLC.', () => {
-    renderWithContext(<Header /> );
+  test('should change rules if the rule stamp clicked', async () => {
+    renderWithContext(
+        <Header/> 
+    );
     const mainHeader = screen.getByRole('heading', { level: 1 })
-    const subHeader = screen.queryByRole('heading', { level: 2 })
+    const ruleStamp = screen.getByRole('button')
     expect(mainHeader).toHaveTextContent(/rock, paper, scissors/i)
-    expect(subHeader).not.toBeInTheDocument();
+    expect(ruleStamp).toHaveTextContent(/classic/i)
+    userEvent.click(ruleStamp);
+    expect(ruleStamp).toHaveTextContent(/lizard, spock/i)
+    userEvent.click(ruleStamp);
+    expect(ruleStamp).toHaveTextContent(/classic/i)
   })
   
 })
