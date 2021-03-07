@@ -2,6 +2,7 @@ import { render, screen, renderWithContext } from '../../test-utils/test-utils';
 import Header from '../Header';
 import { lizardSpockRules, originalRules } from '../../gameRules';
 import { RulesContext } from '../../contexts/rulesContext';
+import userEvent from '@testing-library/user-event';
 
 
 describe('The Header', () => {
@@ -19,9 +20,9 @@ describe('The Header', () => {
 
     );
     const mainHeader = screen.getByRole('heading', { level: 1 })
-    const subHeader = screen.getByRole('heading', { level: 2 })
+    const ruleStamp = screen.getByRole('button')
     expect(mainHeader).toHaveTextContent(/rock, paper, scissors/i)
-    expect(subHeader).toHaveTextContent(/classic/i)
+    expect(ruleStamp).toHaveTextContent(/classic/i)
   })
   
 
@@ -33,9 +34,23 @@ describe('The Header', () => {
 
     );
     const mainHeader = screen.getByRole('heading', { level: 1 })
-    const subHeader = screen.getByRole('heading', { level: 2 })
+    const ruleStamp = screen.getByRole('button')
     expect(mainHeader).toHaveTextContent(/rock, paper, scissors/i)
-    expect(subHeader).toHaveTextContent(/lizard, spock/i)
+    expect(ruleStamp).toHaveTextContent(/lizard, spock/i)
+  })
+
+  test('should change rules if the rule stamp clicked', async () => {
+    renderWithContext(
+        <Header/> 
+    );
+    const mainHeader = screen.getByRole('heading', { level: 1 })
+    const ruleStamp = screen.getByRole('button')
+    expect(mainHeader).toHaveTextContent(/rock, paper, scissors/i)
+    expect(ruleStamp).toHaveTextContent(/classic/i)
+    userEvent.click(ruleStamp);
+    expect(ruleStamp).toHaveTextContent(/lizard, spock/i)
+    userEvent.click(ruleStamp);
+    expect(ruleStamp).toHaveTextContent(/classic/i)
   })
   
 })
