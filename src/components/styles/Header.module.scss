@@ -1,0 +1,7 @@
+@use '../../styles/variables/' as *;
+
+.header {
+  font-family: 'Amatic SC', cursive;
+  font-size: $font-48;
+  color: $red;
+}
