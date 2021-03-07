@@ -3,6 +3,7 @@ import { RulesContext } from '../contexts/rulesContext';
 import useGame from '../hooks/useGame';
 import Choice from './Choice';
 import GameResults from './GameResult';
+import styles from './styles/PlayArea.module.scss';
 
 
 export interface PlayAreaProps {}
@@ -22,7 +23,7 @@ const PlayArea: React.FC<PlayAreaProps> = () => {
     <Choice rules={gameRules} playGame={handlePlayGame}/>
   );
 
-  return <>{activeComponent}</>;
+  return <div className={styles.PlayArea}>{activeComponent}</div>;
 };
 
 export default PlayArea;

@@ -1,0 +1,50 @@
+@use '../../styles/variables/index' as *;
+
+.Rules {
+  grid-column-gap: $space-24;
+  margin: 0 auto;
+  max-width: 60rem;
+  color: $dark-grey;
+  font-size: $font-12;
+}
+
+
+.rules {
+  padding: $space-24;
+  border-radius: 1rem;
+  
+  
+  &Title {
+    margin-bottom: $space-12;
+  }
+  
+  // &Text {
+    
+  // }
+}
+
+.changeRules {
+  margin-top: $space-12;
+  // &Message {
+  
+  // }
+
+  &Btn {
+    @include btn-outline;
+    font-size: $font-16;
+    color: $red;
+    border-color: $red;
+    margin-top: $space-24;
+
+    &:hover, &:focus {
+      color: $off-white;
+      background-color: $red;
+    }
+  }
+
+
+}
+
+
+
+

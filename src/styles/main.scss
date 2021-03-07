@@ -1,0 +1,25 @@
+@use './variables' as *;
+
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 67.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Nunito', 'sans-serif';
+  background-color: $off-white;
+}
+
+button {
+  font-family: 'Nunito', 'sans-serif';
+  background: none;
+  outline: none;
+  border: none;
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { capitalize } from '../utils/capitalize'
+import { capitalize } from '../utils/capitalize';
+import Option from './Option';
 
 export interface ChoiceProps {
   rules: GameRuleset<ValidRules>;
@@ -8,9 +9,7 @@ export interface ChoiceProps {
 
 const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
   const { choices } = rules;
-  const [choice, setChoice] = useState<
-    Choice<ValidRules> | null
-  >(null);
+  const [choice, setChoice] = useState<Choice<ValidRules> | null>(null);
 
   const handlePlayGame = () => {
     if (choice) {
@@ -24,16 +23,18 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
 
   return (
     <div>
-      <h2>{choice ? `You are choosing ${capitalize(choice.choiceName)}` : 'Choose your weapon!'}</h2>
+      <h2>
+        {choice
+          ? `You are choosing ${capitalize(choice.choiceName)}`
+          : 'Choose your weapon!'}
+      </h2>
       <div>
         {choices.map((choice, index) => (
-          <button
-            onClick={() => handleChoice(choice)}
-            // value={choiceName}
+          <Option
             key={choice.choiceName + index}
-          >
-            {capitalize(choice.choiceName)}
-          </button>
+            handleClick={handleChoice}
+            option={choice}
+          />
         ))}
       </div>
       <button onClick={handlePlayGame}>Play!</button>

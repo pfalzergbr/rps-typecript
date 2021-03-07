@@ -1,0 +1,10 @@
+@use './styles/variables/index' as *;
+
+.App {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: min-content 1fr min-content 1fr;
+  max-width: 96rem;
+  margin: 0 auto;
+  grid-row-gap: $space-24;
+}
