@@ -29,7 +29,6 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
         {choices.map((choice, index) => (
           <button
             onClick={() => handleChoice(choice)}
-            // value={choiceName}
             key={choice.choiceName + index}
           >
             {capitalize(choice.choiceName)}

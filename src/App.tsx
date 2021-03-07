@@ -11,8 +11,8 @@ function App() {
     <RulesProvider>
       <div className={styles.App}>
         <Header />
-        <Rules />
         <PlayArea />
+        <Rules />
       </div>
     </RulesProvider>
   );

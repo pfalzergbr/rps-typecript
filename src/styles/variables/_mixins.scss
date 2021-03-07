@@ -1,0 +1,8 @@
+@use './spacing' as s;
+
+@mixin btn-outline {
+    padding: s.$space-4 s.$space-8;
+    border: 1px solid transparent;
+    border-radius: .2rem;
+    font-weight: 600;
+}

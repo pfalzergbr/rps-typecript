@@ -8,7 +8,7 @@
 
 .titleContainer {
   position: relative;
-  margin: $space-36 auto;
+  margin: $space-36 auto $space-24;
   
 }
 
@@ -24,7 +24,6 @@
   font-family: 'Amatic SC', cursive;
   display: block;
   background-color: $off-white;
-  // background-color: $blue;
   font-size: $font-25;
   font-weight: 700;
   border: 2px solid $blue;
