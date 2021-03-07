@@ -5,6 +5,7 @@
   display: grid;
   grid-template-rows: min-content min-content;
   grid-row-gap: $space-8;
+  margin-right: $space-24;
 }
 
 .image {

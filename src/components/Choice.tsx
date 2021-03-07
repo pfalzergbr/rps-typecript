@@ -38,7 +38,7 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
           />
         ))}
       </div>
-      <button onClick={handlePlayGame}>Play!</button>
+      <button className={styles.playButton} onClick={handlePlayGame}>Play!</button>
     </div>
   );
 };
