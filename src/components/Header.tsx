@@ -7,9 +7,11 @@ const Header: React.FC = () => {
   const { title } = gameRules;
 
   return (
-    <div>
-      <h1 className={styles.header}>Rock, Paper, Scissors</h1>
-      {title && <h2>{title}</h2>}
+    <div className={styles.Header}>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.title}>Rock, Paper, Scissors</h1>
+        {title && <h2 className={styles.subtitle}>{title}</h2>}
+      </div>
     </div>
   );
 };

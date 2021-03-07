@@ -1,7 +1,37 @@
 @use '../../styles/variables/' as *;
 
-.header {
+
+.Header {
+  display: flex;
+  align-items: center;
+}
+
+.titleContainer {
+  position: relative;
+  margin: $space-36 auto;
+  
+}
+
+.title {
+  width: 30rem;
+  text-align: center;
   font-family: 'Amatic SC', cursive;
   font-size: $font-48;
   color: $red;
+}
+
+.subtitle {
+  font-family: 'Amatic SC', cursive;
+  display: block;
+  background-color: $orange;
+  // background-color: $blue;
+  font-size: $font-25;
+  font-weight: 300;
+  color: $off-white;
+  padding: $space-4 $space-8;
+
+  position: absolute;
+  bottom: -3rem;
+  right: -1rem;
+  transform: rotate(-7.5deg);
 }
