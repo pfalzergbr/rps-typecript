@@ -4,7 +4,7 @@ import RulesModal from './RulesModal';
 import styles from './styles/Rules.module.scss';
 
 const Rules: React.FC = () => {
-  const [isModalOpen, setIsModalOpen ] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { gameRules } = useContext(RulesContext);
   const { changeRules } = useContext(ActionContext);
   const { buttonText, changeMessage } = gameRules.rulesDescription;
@@ -17,17 +17,27 @@ const Rules: React.FC = () => {
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
-  }
+  };
 
   return (
     <div className={styles.Rules}>
-      {isModalOpen && <RulesModal />}
+      {isModalOpen && <RulesModal closeModal={toggleModal} />}
       <div className={styles.changeRules}>
         <p className={styles.changeRulesMessage}>{changeMessage}</p>
-      <button className={styles.changeRulesBtn} onClick={handleChangeRules}>
-        {buttonText}
-      </button>
-      <button onClick={toggleModal} className={styles.modalBtn}>Show me the Rules</button>
+        <div className={styles.btnContainer}>
+          <button
+            className={`${styles.button} ${styles.changeRulesBtn}`}
+            onClick={handleChangeRules}
+          >
+            {buttonText}
+          </button>
+          <button
+            onClick={toggleModal}
+            className={`${styles.button} ${styles.modalBtn}`}
+          >
+            Show me the Rules
+          </button>
+        </div>
       </div>
     </div>
   );

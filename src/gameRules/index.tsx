@@ -10,7 +10,7 @@ export const originalRules: GameRuleset<OriginalChoices> = {
     rules:
       'A classic, time proven way to resolve your disputes.',
     changeMessage:
-      'Anecdotal evidence suggests, that people familiar with each other, will tie 75 to 80% of the time, due to the limited number of outcomes. Want to try with more options?',
+      'Anecdotal evidence suggests, that people familiar with each other, will tie 75 of the time, due to the limited number of outcomes. Want to try with more options?',
     buttonText: 'Add Lizard/Spock',
   },
   choices: [
@@ -63,7 +63,7 @@ export const lizardSpockRules: GameRuleset<LizardSpockChoices> = {
     rules:
       '...and as it always has, rock crushes scissors.',
     changeMessage:
-      'Sounds complicated? Ask Dr. Cooper to explain again, or Switch back to classic ruleset',
+      'Rather stick to the classic? You can switch back.',
     buttonText: 'Classic Rules',
   },
   choices: [
