@@ -17,8 +17,8 @@ describe('PlayArea', () => {
     userEvent.click(paperButton);
     const playButton = screen.getByRole('button', {name: /play/i});
     userEvent.click(playButton);
-    const resultHeader = await screen.findByRole('heading');
-    expect(resultHeader).toHaveTextContent(/results/i)
+    const resultImages = await screen.findAllByRole('img');
+    expect(resultImages).toHaveLength(2)
   })
 
   test('should render Choice buttons again, if clicked play again', async () => {

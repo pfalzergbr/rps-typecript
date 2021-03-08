@@ -94,11 +94,11 @@ export const lizardSpockRules: GameRuleset<LizardSpockChoices> = {
       beats: [
         {
           choice: 'paper',
-          message: 'Lizard eats paper',
+          message: 'Lizard eats paper.',
         },
         {
           choice: 'spock',
-          message: 'Lizard poisions Spock',
+          message: 'Lizard poisions Spock.',
         },
       ],
     },

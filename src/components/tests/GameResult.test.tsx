@@ -17,9 +17,9 @@ describe('GameResult', () => {
     const image = await screen.findAllByRole('img');
     expect(image[0]).toHaveStyle({backgroundImage: 'url(./images/spock.png)'})
     expect(image[1]).toHaveStyle({backgroundImage: 'url(./images/paper.png)'})
-    const playerChoice = await screen.findByText(`You chose Spock!`)
+    const playerChoice = await screen.findByText(`chose Spock!`)
     expect(playerChoice).toBeInTheDocument();
-    const computerChoice = await screen.findByText(`Computer chose Paper!`)
+    const computerChoice = await screen.findByText(`chose Paper!`)
     expect(computerChoice).toBeInTheDocument();
     const resultMessage = await screen.findByText('Paper disproves Spock. Computer wins!')
     expect(resultMessage).toBeInTheDocument()
@@ -40,9 +40,9 @@ describe('GameResult', () => {
     const image = await screen.findAllByRole('img');
     expect(image[0]).toHaveStyle({backgroundImage: 'url(./images/rock.png)'})
     expect(image[1]).toHaveStyle({backgroundImage: 'url(./images/lizard.png)'})
-    const playerChoice = await screen.findByText(`You chose Rock!`)
+    const playerChoice = await screen.findByText(`chose Rock!`)
     expect(playerChoice).toBeInTheDocument();
-    const computerChoice = await screen.findByText(`Computer chose Lizard!`)
+    const computerChoice = await screen.findByText(`chose Lizard!`)
     expect(computerChoice).toBeInTheDocument();
     const resultMessage = await screen.findByText('Rock crushes lizard. You win!')
     expect(resultMessage).toBeInTheDocument()
@@ -63,9 +63,10 @@ describe('GameResult', () => {
     const image = await screen.findAllByRole('img');
     expect(image[0]).toHaveStyle({backgroundImage: 'url(./images/scissors.png)'})
     expect(image[1]).toHaveStyle({backgroundImage: 'url(./images/scissors.png)'})
-    const playerChoice = await screen.findByText(`You chose Scissors!`)
+    const choices = await screen.findAllByText(`chose Scissors!`)
+    const playerChoice = choices[0]  
     expect(playerChoice).toBeInTheDocument();
-    const computerChoice = await screen.findByText(`Computer chose Scissors!`)
+    const computerChoice = choices[1]  
     expect(computerChoice).toBeInTheDocument();
     const resultMessage = await screen.findByText("You both chose scissors. It's a draw!")
     expect(resultMessage).toBeInTheDocument()
