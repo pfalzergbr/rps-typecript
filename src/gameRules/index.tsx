@@ -127,7 +127,7 @@ export const lizardSpockRules: GameRuleset<LizardSpockChoices> = {
           message: 'Spock vapourizes rock.',
         },
         {
-          choice: 'spock',
+          choice: 'scissors',
           message: 'Spock crushes scissors.',
         },
       ],
