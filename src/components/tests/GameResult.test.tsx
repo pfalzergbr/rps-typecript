@@ -14,6 +14,9 @@ describe('GameResult', () => {
     };
 
     render(<GameResult gameResult={gameResult} restartGame={mockRestart} />);
+    const image = await screen.findAllByRole('img');
+    expect(image[0]).toHaveStyle({backgroundImage: 'url(./images/spock.png)'})
+    expect(image[1]).toHaveStyle({backgroundImage: 'url(./images/paper.png)'})
     const playerChoice = await screen.findByText(`You chose Spock!`)
     expect(playerChoice).toBeInTheDocument();
     const computerChoice = await screen.findByText(`Computer chose Paper!`)
@@ -34,6 +37,9 @@ describe('GameResult', () => {
     };
 
     render(<GameResult gameResult={gameResult} restartGame={mockRestart} />);
+    const image = await screen.findAllByRole('img');
+    expect(image[0]).toHaveStyle({backgroundImage: 'url(./images/rock.png)'})
+    expect(image[1]).toHaveStyle({backgroundImage: 'url(./images/lizard.png)'})
     const playerChoice = await screen.findByText(`You chose Rock!`)
     expect(playerChoice).toBeInTheDocument();
     const computerChoice = await screen.findByText(`Computer chose Lizard!`)
@@ -54,6 +60,9 @@ describe('GameResult', () => {
     };
 
     render(<GameResult gameResult={gameResult} restartGame={mockRestart} />);
+    const image = await screen.findAllByRole('img');
+    expect(image[0]).toHaveStyle({backgroundImage: 'url(./images/scissors.png)'})
+    expect(image[1]).toHaveStyle({backgroundImage: 'url(./images/scissors.png)'})
     const playerChoice = await screen.findByText(`You chose Scissors!`)
     expect(playerChoice).toBeInTheDocument();
     const computerChoice = await screen.findByText(`Computer chose Scissors!`)

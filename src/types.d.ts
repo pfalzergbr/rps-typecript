@@ -4,6 +4,8 @@ type LizardSpockChoices = 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock';
 
 type ValidRules = OriginalChoices | LizardSpockChoices;
 
+type PlayerName = 'you' | 'computer'
+
 interface IActionContext {
   changeRules: (rules: string) => void;
 }

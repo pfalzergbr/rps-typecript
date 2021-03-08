@@ -1,5 +1,7 @@
 import { capitalize } from '../utils/capitalize';
 import { generateWinnerMessage } from '../utils/generateWinnerMessage';
+import ResultOption from './ResultOption';
+
 export interface GameResultProps {
   gameResult: WinnerObject;
   restartGame: () => void;
@@ -20,12 +22,10 @@ const GameResult: React.FC<GameResultProps> = ({ restartGame, gameResult }) => {
   return (
     <div>
       <h2>Results</h2>
-      <div>
-        <p>{playerChoiceMessage}</p>
-      </div>
-      <div>
-        <p>{computerChoiceMessage}</p>
-      </div>
+
+      <ResultOption player='you' option={gameResult.playerChoice} message={playerChoiceMessage}/>
+      <ResultOption player='computer' option={gameResult.computerChoice} message={computerChoiceMessage}/>
+
       <div>
         <p>{resultMessage}</p>
       </div>
