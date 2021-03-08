@@ -1,33 +1,43 @@
 import { render, renderWithContext, screen } from '../../test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import Rules from '../Rules';
-import { lizardSpockRules } from '../../gameRules';
+import { originalRules, lizardSpockRules } from '../../gameRules';
 
 describe('Welcome message without DLC', () => {
-  const ruleset = {
-    rules:
-      'Scissors cuts paper, paper covers rock, rock crushes scissors. A classic, time proven way to resolve your disputes.',
-    changeMessage:
-      'Anecdotal evidence suggests, that people familiar with each other, will tie 75 to 80% of the time, due to the limited number of outcomes. Want to try with more options?',
-    buttonText: 'Add Lizard/Spock',
-  };
+  const { rules, changeMessage, buttonText } = originalRules.rulesDescription;
 
   test('should render welcome message without DLC', () => {
     render(<Rules />);
-    const rules = screen.getByText(ruleset.rules);
-    expect(rules).toBeInTheDocument();
+    const rulesButton = screen.getByRole('button', { name: /rules/i });
+    userEvent.click(rulesButton);
+    const originalRules = screen.getByText(rules);
+    expect(originalRules).toBeInTheDocument();
+  });
+
+  // test('should render correct rules list without DLC', () => {
+  //   render(<Rules />);
+  //   const rulesList = screen.getAllByRole('listitem');
+  //   expect(rulesList).toHaveLength(3);
+  // })
+
+  test('should render Rules modal button', () => {
+    render(<Rules />);
+    const rulesButton = screen.getByRole('button', {
+      name: 'Show me the Rules',
+    });
+    expect(rulesButton).toBeInTheDocument();
   });
 
   test('should render a change message without DLC', () => {
     render(<Rules />);
-    const changeMessage = screen.getByText(ruleset.changeMessage);
-    expect(changeMessage).toBeInTheDocument();
+    const originalChangeMessage = screen.getByText(changeMessage);
+    expect(originalChangeMessage).toBeInTheDocument();
   });
 
   test('should render DLC button', () => {
     render(<Rules />);
     const changeButton = screen.getByRole('button', {
-      name: ruleset.buttonText,
+      name: buttonText,
     });
     expect(changeButton).toBeInTheDocument();
   });
@@ -40,11 +50,13 @@ describe('Welcome message WITH DLC', () => {
     buttonText,
   } = lizardSpockRules.rulesDescription;
 
-  test('should render DLC welcome message', () => {
+  test('should render DLC welcome message', async () => {
     renderWithContext(<Rules />);
+    const rulesButton = screen.getByRole('button', { name: /rules/i });
     const changeButton = screen.getByRole('button', { name: /add/i });
     userEvent.click(changeButton);
-    const dlcRules = screen.getByText(rules);
+    userEvent.click(rulesButton);
+    const dlcRules = await screen.findByText(rules);
     expect(dlcRules).toHaveTextContent(rules);
   });
 
@@ -53,7 +65,7 @@ describe('Welcome message WITH DLC', () => {
     const changeButton = screen.getByRole('button', { name: /add/i });
     userEvent.click(changeButton);
     const dlcChangeMessage = screen.getByText(changeMessage);
-    expect(dlcChangeMessage).toHaveTextContent(changeMessage)
+    expect(dlcChangeMessage).toHaveTextContent(changeMessage);
   });
 
   test('should render switch off DLC button', () => {
@@ -63,7 +75,7 @@ describe('Welcome message WITH DLC', () => {
     const dlcChangeButton = screen.getByRole('button', {
       name: buttonText,
     });
-    expect(dlcChangeButton).toHaveTextContent(buttonText)
+    expect(dlcChangeButton).toHaveTextContent(buttonText);
   });
 
   test('should switch back to original, once clicked on back to original Button', () => {
@@ -74,6 +86,6 @@ describe('Welcome message WITH DLC', () => {
       name: buttonText,
     });
     userEvent.click(dlcChangeButton);
-    expect(changeButton).toHaveTextContent('Add Lizard/Spock')
+    expect(changeButton).toHaveTextContent('Add Lizard/Spock');
   });
 });

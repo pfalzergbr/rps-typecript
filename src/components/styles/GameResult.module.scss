@@ -1,18 +1,28 @@
 @use '../../styles/variables/index' as *;
 
-
-.Choice {
+.GameResult {
   display: grid;
-  grid-row-gap: $space-24;
+  grid-template-rows: min-content, 1fr;
+  grid-row-gap: $space-54;
 }
 
-.choices {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.results {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-column-gap: $space-54;
 }
 
-.playButton {
+.resultMessage {
+  margin: 0 auto;
+  max-width: 38rem;
+}
+
+.resultText {
+  margin-bottom: $space-24;
+  font-weight: 600;
+}
+
+.restartButton {
   @include btn-outline;
   font-size: $font-20;
   // font-weight: 600;
@@ -30,8 +40,3 @@
     transform: translateY(1px);
   }
 }
-
-
-// .choiceMessage {
-  
-// }

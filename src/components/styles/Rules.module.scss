@@ -3,24 +3,16 @@
 .Rules {
   grid-column-gap: $space-24;
   margin: 0 auto;
-  max-width: 60rem;
+  max-width: 50rem;
   color: $dark-grey;
   font-size: $font-12;
 }
 
 
-.rules {
-  padding: $space-24;
-  border-radius: 1rem;
-  
-  
-  &Title {
-    margin-bottom: $space-12;
-  }
-  
-  // &Text {
-    
-  // }
+.button {
+  @include btn-outline;
+  font-size: $font-16;
+  margin-top: $space-24;
 }
 
 .changeRules {
@@ -30,11 +22,8 @@
   // }
 
   &Btn {
-    @include btn-outline;
-    font-size: $font-16;
     color: $red;
     border-color: $red;
-    margin-top: $space-24;
 
     &:hover, &:focus {
       color: $off-white;
@@ -45,6 +34,23 @@
 
 }
 
+.modalBtn {
+  color: $blue;
+  border-color: $blue;
+
+  &:hover, &:focus {
+    color: $off-white;
+    background-color: $blue;
+  }
+}
 
 
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  
+  & > :not(:last-child) {
+    margin-right: $space-12;
+  }
+}
 
