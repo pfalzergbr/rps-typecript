@@ -1,7 +1,7 @@
 import { capitalize } from '../utils/capitalize';
 import { generateWinnerMessage } from '../utils/generateWinnerMessage';
 import ResultOption from './ResultOption';
-import styles from './styles/GameResult.module.scss'
+import styles from './styles/GameResult.module.scss';
 
 export interface GameResultProps {
   gameResult: WinnerObject;
@@ -9,9 +9,7 @@ export interface GameResultProps {
 }
 
 const GameResult: React.FC<GameResultProps> = ({ restartGame, gameResult }) => {
-  const playerChoiceMessage = `chose ${capitalize(
-    gameResult.playerChoice
-  )}!`;
+  const playerChoiceMessage = `chose ${capitalize(gameResult.playerChoice)}!`;
   const computerChoiceMessage = `chose ${capitalize(
     gameResult.computerChoice
   )}!`;
@@ -37,8 +35,10 @@ const GameResult: React.FC<GameResultProps> = ({ restartGame, gameResult }) => {
 
       <div className={styles.resultMessage}>
         <p className={styles.resultText}>{resultMessage}</p>
+        <button className={styles.restartButton} onClick={restartGame}>
+          Play again
+        </button>
       </div>
-      <button className={styles.restartButton} onClick={restartGame}>Play again</button>
     </div>
   );
 };

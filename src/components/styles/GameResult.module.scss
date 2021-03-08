@@ -12,13 +12,15 @@
   grid-column-gap: $space-54;
 }
 
-// .resultMessage {
+.resultMessage {
+  margin: 0 auto;
+  max-width: 60%;
+}
 
-// }
-
-// .resultText {
-
-// }
+.resultText {
+  margin-bottom: $space-24;
+  font-weight: 600;
+}
 
 .restartButton {
   @include btn-outline;
