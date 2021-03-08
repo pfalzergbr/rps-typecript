@@ -15,6 +15,7 @@ interface RulesProviderProps {
 }
 
 interface RulesDescription {
+  ruleBullets: string[]
   rules: string;
   changeMessage: string;
   buttonText: string;
