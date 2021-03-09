@@ -39,7 +39,7 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
           ? `You are choosing ${capitalize(choice.choiceName)}!`
           : 'Choose your weapon!'}
       </p>
-      <button className={styles.playButton} onClick={handlePlayGame}>
+      <button disabled={!choice} className={styles.playButton} onClick={handlePlayGame}>
         Play!
       </button>
     </div>

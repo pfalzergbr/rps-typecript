@@ -55,14 +55,14 @@ describe('Choice Area', () => {
     expect(buttons[2]).toHaveTextContent(/scissors/i);
   });
 
-  // test('should display the right chosen option, if the user chose', () => {
-  //   render(<Choice rules={originalRules} playGame={mockPlayGame} />);
-  //   const chosenOption = screen.getByText(/choose/i, { exact: false });
-  //   expect(chosenOption).toBeInTheDocument();
-  //   const rockButton = screen.getByRole('button', { name: /rock/i });
-  //   userEvent.click(rockButton);
-  //   expect(chosenOption).toHaveTextContent(/rock/i);
-  // });
+  test('should display the right chosen option, if the user chose', () => {
+    render(<Choice rules={originalRules} playGame={mockPlayGame} />);
+    const chosenOption = screen.getByText(/choose/i, { exact: false });
+    expect(chosenOption).toBeInTheDocument();
+    const rockButton = screen.getByRole('button', { name: /rock/i });
+    userEvent.click(rockButton);
+    expect(chosenOption).toHaveTextContent(/rock/i);
+  });
 
 
   test('should highlight the right option option if clicked', () => {
@@ -76,4 +76,23 @@ describe('Choice Area', () => {
     expect(images[1]).not.toHaveClass('active');
     expect(images[2]).not.toHaveClass('active');
   })
+
+  test('play button should be disabled, if there is nothing chosen.', () => {
+    render(<Choice rules={originalRules} playGame={mockPlayGame} />);
+    const buttons = screen.getAllByRole('button');
+    expect(buttons[0]).not.toHaveClass('active');
+    expect(buttons[1]).not.toHaveClass('active');
+    expect(buttons[2]).not.toHaveClass('active');
+    expect(buttons[3]).toHaveTextContent(/play/i);
+    expect(buttons[3]).toBeDisabled()
+  })
+
+  test('should enable the play button, if an option is chosen', () => {
+    render(<Choice rules={originalRules} playGame={mockPlayGame} />);
+    const buttons = screen.getAllByRole('button');
+    userEvent.click(buttons[1]);
+    expect(buttons[3]).not.toBeDisabled();
+  })
+  
+  
 });

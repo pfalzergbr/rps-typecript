@@ -20,6 +20,7 @@
   border: 1px solid $blue;
   justify-self: center;
 
+
   &:hover, &:focus {
     color: $off-white;
     background-color: $blue;
@@ -29,6 +30,16 @@
   &:active {
     transform: translateY(1px);
   }
+  
+  &[disabled] {
+    opacity: 0.3;
+    &:hover {
+      color: $blue;
+      background-color: $off-white;
+      transform: translateY(0px);  
+    }
+  }
+
 }
 
 
