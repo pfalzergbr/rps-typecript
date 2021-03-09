@@ -11,6 +11,7 @@ export const RulesProvider: React.FC<RulesProviderProps> = (props) => {
   const [choice, setChoice] = useState<Choice<ValidRules> | null>(null);
 
   const changeRules = (rules: string = 'original') => {
+    setChoice(null);
     rules === 'lizardSpock'
       ? setGameRules(lizardSpockRules)
       : setGameRules(originalRules);

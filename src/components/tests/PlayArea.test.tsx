@@ -1,4 +1,4 @@
-import { render, screen } from '../../test-utils/test-utils';
+import { render, renderWithContext, screen } from '../../test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import PlayArea from '../PlayArea';
 
@@ -12,7 +12,7 @@ describe('PlayArea', () => {
   })
 
   test('should render GameResult component, if the game ran', async () => {
-    render(<PlayArea />)
+    renderWithContext(<PlayArea />)
     const paperButton = screen.getByRole('button', {name: /rock/i});
     userEvent.click(paperButton);
     const playButton = screen.getByRole('button', {name: /play/i});
@@ -22,7 +22,7 @@ describe('PlayArea', () => {
   })
 
   test('should render Choice buttons again, if clicked play again', async () => {
-    render(<PlayArea />)
+    renderWithContext(<PlayArea />)
     const paperButton = screen.getByRole('button', {name: /rock/i});
     userEvent.click(paperButton);
     const playButton = screen.getByRole('button', {name: /play/i});
