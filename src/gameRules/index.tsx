@@ -19,7 +19,7 @@ export const originalRules: GameRuleset<OriginalChoices> = {
       beats: [
         {
           choice: 'scissors',
-          message: 'Rock smashes scissors.',
+          message: 'Rock crushes scissors.',
         },
       ],
     },
@@ -72,11 +72,11 @@ export const lizardSpockRules: GameRuleset<LizardSpockChoices> = {
       beats: [
         {
           choice: 'scissors',
-          message: 'Rock smashes scissors.',
+          message: 'Rock crushes scissors.',
         },
         {
           choice: 'lizard',
-          message: 'Rock smashes lizard.',
+          message: 'Rock crushes lizard. (In Theory, we would never try)',
         },
       ],
     },

@@ -41,7 +41,7 @@ describe('Choice Area', () => {
       beats: [
         {
           choice: 'scissors',
-          message: 'Rock smashes scissors.',
+          message: 'Rock crushes scissors.',
         },
       ],
     });

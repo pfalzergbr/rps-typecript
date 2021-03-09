@@ -2,7 +2,8 @@
 
 .overlay {
   position: absolute;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100%;
   width: 100vw;
   left: 0;
   top: 0;
@@ -16,13 +17,23 @@
   position: absolute;
   z-index: 3;
   background-color: $off-white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 5px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  
+  @media(min-width: 37rem){
+    min-width: 37rem;
+    transform: translate(-50%, -50%);
+    height: auto;
+    top: 50%;
+    left: 50%;
+    
+  }
+
 }
 .rules {
-  padding: $space-24;
+  padding: $space-54;
   border-radius: 1rem;
   
   
