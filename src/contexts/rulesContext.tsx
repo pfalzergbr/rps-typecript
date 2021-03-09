@@ -8,6 +8,7 @@ export const ActionContext: React.Context<IActionContext> = createContext(
 
 export const RulesProvider: React.FC<RulesProviderProps> = (props) => {
   const [gameRules, setGameRules] = useState(originalRules);
+  const [choice, setChoice] = useState<Choice<ValidRules> | null>(null);
 
   const changeRules = (rules: string = 'original') => {
     rules === 'lizardSpock'
@@ -17,7 +18,7 @@ export const RulesProvider: React.FC<RulesProviderProps> = (props) => {
 
   return (
     <RulesContext.Provider value={{ gameRules }}>
-      <ActionContext.Provider value={{ changeRules }}>
+      <ActionContext.Provider value={{ changeRules, choice, setChoice }}>
         {props.children}
       </ActionContext.Provider>
     </RulesContext.Provider>
