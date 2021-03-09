@@ -48,7 +48,7 @@
 .btnContainer {
   display: flex;
   justify-content: center;
-  
+  margin-bottom: $space-24;
   & > :not(:last-child) {
     margin-right: $space-12;
   }

@@ -1,13 +1,14 @@
 type OriginalChoices = 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock';
-// type OriginalChoices = 'rock' | 'paper' | 'scissors' ;
 type LizardSpockChoices = 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock';
 
 type ValidRules = OriginalChoices | LizardSpockChoices;
 
-type PlayerName = 'you' | 'computer'
+type PlayerName = string
 
 interface IActionContext {
   changeRules: (rules: string) => void;
+  setChoice: React.Dispatch<React.SetStateAction<Choice<ValidRules> | null>> 
+  choice: Choice<ValidRules> | null
 }
 
 interface RulesProviderProps {

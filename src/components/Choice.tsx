@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { capitalize } from '../utils/capitalize';
 import Option from './Option';
 import styles from './styles/Choice.module.scss';
+import { ActionContext } from '../contexts/rulesContext';
 
 export interface ChoiceProps {
   rules: GameRuleset<ValidRules>;
@@ -10,7 +11,7 @@ export interface ChoiceProps {
 
 const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
   const { choices } = rules;
-  const [choice, setChoice] = useState<Choice<ValidRules> | null>(null);
+  const {choice, setChoice } = useContext(ActionContext);
 
   const handlePlayGame = () => {
     if (choice) {
@@ -39,7 +40,7 @@ const Choice: React.FC<ChoiceProps> = ({ rules, playGame }) => {
           ? `You are choosing ${capitalize(choice.choiceName)}!`
           : 'Choose your weapon!'}
       </p>
-      <button className={styles.playButton} onClick={handlePlayGame}>
+      <button disabled={!choice} className={styles.playButton} onClick={handlePlayGame}>
         Play!
       </button>
     </div>
